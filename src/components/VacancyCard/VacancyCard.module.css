@@ -1,0 +1,96 @@
+.card {
+  background: #fff;
+  border: 1px solid #E9ECEF;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 659px;
+  min-height: 248px;
+  padding: 24px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #4263EB;
+  line-height: 1.4;
+}
+
+.salary {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.experience {
+  font-size: 14px;
+  font-weight: 400;
+  color: #868E96;
+}
+
+.employer {
+  font-size: 14px;
+  font-weight: 400;
+  color: #868E96;
+}
+
+.city {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+}
+
+.badge {
+  width: fit-content;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.remote {
+  background-color: #4263EB;
+  color: #DBE4FF;
+}
+
+.office {
+  background-color: #D9D9D9;
+  color: #343A40;
+}
+
+.hybrid {
+  background-color: #343A40;
+  color: #fff;
+}
+
+.buttonPrimary {
+  background-color: #0F0F10;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 172px;
+  height: 36px;
+  padding: 0 16px;
+  white-space: nowrap;
+}
+
+.buttonPrimary:hover {
+  background-color: #000;
+}
+
+.buttonSecondary {
+  border: 1px solid #D9D9D9;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 131px;
+  height: 36px;
+  padding: 0 16px;
+  background-color: transparent;
+  white-space: nowrap;
+}
+
+.buttonSecondary:hover {
+  background-color: #F6F6F7;
+  border-color: #D9D9D9;
+  color: #000;
+}

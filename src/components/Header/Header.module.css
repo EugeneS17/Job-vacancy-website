@@ -1,0 +1,55 @@
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #e9ecef;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  height: 100%;
+  max-width: 1440px !important;
+  display: flex;
+  align-items: center;
+}
+
+.logoText {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+
+.nav {
+  width: 212px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  font-weight: 400;
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.link:hover {
+  color: #4263EB;
+}
+
+.activeLink {
+  color: #4263EB;
+}
+
+.activeDot {
+  width: 6px;
+  height: 6px;
+  background-color: #4263EB;
+  border-radius: 50%;
+  margin-left: 4px;
+}

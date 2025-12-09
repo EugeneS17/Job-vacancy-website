@@ -1,0 +1,66 @@
+{
+  "name": "job-vacancy-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Job search app for Frontend developers using HeadHunter API",
+  "author": "Eugene_Sosnovskiy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EugeneS17/Job-vacancy-website.git"
+  },
+  "homepage": "https://EugeneS17.github.io/Job-vacancy-website/",
+  "keywords": [
+    "react",
+    "typescript",
+    "redux",
+    "mantine",
+    "job-search",
+    "headhunter",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@mantine/core": "^8.3.9",
+    "@mantine/hooks": "^8.3.9",
+    "@reduxjs/toolkit": "^2.11.0",
+    "@tabler/icons-react": "^3.35.0",
+    "axios": "^1.13.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-redux": "^9.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/testing-library__jest-dom": "^5.14.9",
+    "@vitejs/plugin-react": "^5.1.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "jsdom": "^27.0.1",
+    "postcss": "^8.5.6",
+    "postcss-preset-mantine": "^1.18.0",
+    "postcss-simple-vars": "^7.0.1",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.48.0",
+    "vite": "^7.2.4",
+    "vitest": "^3.2.4"
+  }
+}

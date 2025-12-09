@@ -1,0 +1,23 @@
+.filters {
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #E9ECEF;
+  width: 280px;
+}
+
+.citySelect {
+  width: 100%;
+}
+
+.citySelect label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.citySelect input {
+  border: 1px solid #E9ECEF;
+  font-size: 14px;
+}

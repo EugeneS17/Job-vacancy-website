@@ -1,0 +1,91 @@
+.container {
+  padding-top: 24px;
+  padding-bottom: 48px;
+  max-width: 1440px !important;
+}
+
+.headerSection {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #868E96;
+}
+
+.searchGroup {
+  flex-wrap: nowrap;
+}
+
+.searchInput {
+  width: 403px;
+}
+
+.searchInput input {
+  border: 1px solid #E9ECEF;
+  font-size: 14px;
+  height: 42px;
+  border-radius: 4px;
+}
+
+.searchButton {
+  background-color: #4263EB;
+  font-size: 14px;
+  font-weight: 400;
+  width: 93px;
+  height: 42px;
+  border-radius: 4px;
+  padding: 1px 22px;
+}
+
+.searchButton:hover {
+  background-color: #3B5BDB;
+}
+
+.pagination {
+  gap: 4px;
+}
+
+.pagination button {
+  border: 1px solid #E9ECEF;
+  color: #000;
+  font-size: 14px;
+  min-width: 32px;
+  height: 32px;
+}
+
+.pagination button[data-active="true"] {
+  background-color: #4263EB;
+  border-color: #4263EB;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .searchGroup {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .searchInput {
+    width: 100%;
+    flex: 1;
+  }
+
+  .container {
+    padding-top: 16px;
+    padding-bottom: 32px;
+  }
+}
