@@ -1,0 +1,64 @@
+.container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.content {
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+}
+
+.imageWrapper {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+}
+
+.button {
+  background-color: #4263EB;
+  color: white;
+  font-weight: 500;
+  padding: 0.625rem 1.5rem;
+  transition: background-color 0.2s ease;
+  min-width: 150px;
+}
+
+.button:hover {
+  background-color: #3B5BDB;
+}
+
+@media (max-width: 768px) {
+  .imageWrapper {
+    max-width: 300px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
