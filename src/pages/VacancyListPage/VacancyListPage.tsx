@@ -1,7 +1,8 @@
 import { useEffect, useCallback, useMemo, useState } from 'react';
 import type { KeyboardEvent } from 'react';
-import { Container, Title, Text, Stack, Pagination, Center, Loader, Alert, TextInput, Button, Group, Grid, Box } from '@mantine/core';
+import { Container, Title, Text, Stack, Pagination, Center, Loader, Alert, TextInput, Button, Group, Grid, Box, Tabs } from '@mantine/core';
 import { IconAlertCircle, IconSearch } from '@tabler/icons-react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   fetchVacancies,
@@ -13,15 +14,26 @@ import {
 } from '../../store/vacanciesSlice';
 import { VacancyFilters } from '../../components/VacancyFilters/VacancyFilters';
 import { VacancyCard } from '../../components/VacancyCard/VacancyCard';
+import { AREAS } from '../../types/vacancy';
 import classes from './VacancyListPage.module.css';
 
 export function VacancyListPage() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { city } = useParams<{ city: string }>();
+  
   const { items, loading, error, totalPages, filters } = useAppSelector(
     (state) => state.vacancies
   );
 
   const [searchInput, setSearchInput] = useState(filters.text);
+
+  useEffect(() => {
+    const areaId = city === 'moscow' ? AREAS.MOSCOW : city === 'petersburg' ? AREAS.SAINT_PETERSBURG : AREAS.MOSCOW;
+    if (filters.area !== areaId) {
+      dispatch(setArea(areaId));
+    }
+  }, [city, dispatch, filters.area]);
 
   const fetchParams = useMemo(
     () => ({
@@ -37,6 +49,15 @@ export function VacancyListPage() {
     dispatch(fetchVacancies(fetchParams));
   }, [dispatch, fetchParams]);
 
+  const handleTabChange = useCallback(
+    (value: string | null) => {
+      if (value) {
+        navigate(`/vacancies/${value}`);
+      }
+    },
+    [navigate]
+  );
+
   const handleSearch = useCallback(() => {
     dispatch(setSearchText(searchInput));
   }, [dispatch, searchInput]);
@@ -49,13 +70,6 @@ export function VacancyListPage() {
       }
     },
     [handleSearch]
-  );
-
-  const handleAreaChange = useCallback(
-    (value: string) => {
-      dispatch(setArea(value));
-    },
-    [dispatch]
   );
 
   const handleAddSkill = useCallback(
@@ -131,15 +145,26 @@ export function VacancyListPage() {
       <Grid gutter={32}>
         <Grid.Col span={{ base: 12, md: 'auto' }} style={{ flexBasis: '280px', flexGrow: 0 }}>
           <VacancyFilters
-            area={filters.area}
             skills={filters.skillSet}
-            onAreaChange={handleAreaChange}
             onAddSkill={handleAddSkill}
             onRemoveSkill={handleRemoveSkill}
           />
         </Grid.Col>
 
         <Grid.Col span={{ base: 12, md: 'auto' }} style={{ flex: 1 }}>
+          {/* City Tabs */}
+          <Tabs 
+            value={city} 
+            onChange={handleTabChange}
+            className={classes.tabs}
+            variant="unstyled"
+          >
+            <Tabs.List className={classes.tabsList}>
+              <Tabs.Tab value="moscow" className={classes.tabItem}>Москва</Tabs.Tab>
+              <Tabs.Tab value="petersburg" className={classes.tabItem}>Санкт-Петербург</Tabs.Tab>
+            </Tabs.List>
+          </Tabs>
+
           {loading ? (
             <Center py="xl">
               <Loader size="lg" color="blue.7" />
