@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MantineProvider } from '@mantine/core';
+import { MemoryRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import vacanciesReducer from '../store/vacanciesSlice';
 import { theme } from '../theme';
@@ -29,7 +30,9 @@ export function renderWithProviders(
   function Wrapper({ children }: { children: ReactNode }) {
     return (
       <Provider store={store}>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MemoryRouter>
+          <MantineProvider theme={theme}>{children}</MantineProvider>
+        </MemoryRouter>
       </Provider>
     );
   }
