@@ -61,6 +61,7 @@ export interface Vacancy {
   employment: Employment;
   schedule: Schedule;
   key_skills?: KeySkill[];
+  description?: string;
   snippet?: {
     requirement: string | null;
     responsibility: string | null;

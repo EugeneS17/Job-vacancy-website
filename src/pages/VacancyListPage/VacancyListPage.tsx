@@ -1,8 +1,8 @@
-import { useEffect, useCallback, useMemo, useState } from 'react';
+import { useEffect, useCallback, useMemo, useState, useRef } from 'react';
 import type { KeyboardEvent } from 'react';
 import { Container, Title, Text, Stack, Pagination, Center, Loader, Alert, TextInput, Button, Group, Grid, Box, Tabs } from '@mantine/core';
 import { IconAlertCircle, IconSearch } from '@tabler/icons-react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   fetchVacancies,
@@ -11,6 +11,7 @@ import {
   addSkill,
   removeSkill,
   setPage,
+  setSkills,
 } from '../../store/vacanciesSlice';
 import { VacancyFilters } from '../../components/VacancyFilters/VacancyFilters';
 import { VacancyCard } from '../../components/VacancyCard/VacancyCard';
@@ -21,12 +22,26 @@ export function VacancyListPage() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { city } = useParams<{ city: string }>();
-  
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const { items, loading, error, totalPages, filters } = useAppSelector(
     (state) => state.vacancies
   );
 
-  const [searchInput, setSearchInput] = useState(filters.text);
+  const [searchInput, setSearchInput] = useState(() => searchParams.get('text') || '');
+  const isInitializedRef = useRef(false);
+
+  useEffect(() => {
+    if (isInitializedRef.current) return;
+
+    const textParam = searchParams.get('text') || '';
+    const skillsParam = searchParams.get('skills') || '';
+    const skills = skillsParam ? skillsParam.split(',').filter(Boolean) : ['TypeScript', 'React', 'Redux'];
+
+    dispatch(setSearchText(textParam));
+    dispatch(setSkills(skills));
+    isInitializedRef.current = true;
+  }, [dispatch, searchParams]);
 
   useEffect(() => {
     const areaId = city === 'moscow' ? AREAS.MOSCOW : city === 'petersburg' ? AREAS.SAINT_PETERSBURG : AREAS.MOSCOW;
@@ -34,6 +49,22 @@ export function VacancyListPage() {
       dispatch(setArea(areaId));
     }
   }, [city, dispatch, filters.area]);
+
+  useEffect(() => {
+    if (!isInitializedRef.current) return;
+
+    const params = new URLSearchParams();
+
+    if (filters.text) {
+      params.set('text', filters.text);
+    }
+
+    if (filters.skillSet.length > 0) {
+      params.set('skills', filters.skillSet.join(','));
+    }
+
+    setSearchParams(params, { replace: true });
+  }, [filters.text, filters.skillSet, setSearchParams]);
 
   const fetchParams = useMemo(
     () => ({

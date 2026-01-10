@@ -88,6 +88,10 @@ const vacanciesSlice = createSlice({
       );
       state.filters.page = 0;
     },
+    setSkills: (state, action: PayloadAction<string[]>) => {
+      state.filters.skillSet = action.payload;
+      state.filters.page = 0;
+    },
     setPage: (state, action: PayloadAction<number>) => {
       state.filters.page = action.payload;
     },
@@ -111,6 +115,6 @@ const vacanciesSlice = createSlice({
   },
 });
 
-export const { setSearchText, setArea, addSkill, removeSkill, setPage } = vacanciesSlice.actions;
+export const { setSearchText, setArea, addSkill, removeSkill, setSkills, setPage } = vacanciesSlice.actions;
 export default vacanciesSlice.reducer;
 

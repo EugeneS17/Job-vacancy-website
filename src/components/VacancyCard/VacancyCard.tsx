@@ -1,4 +1,5 @@
 import { Card, Text, Badge, Group, Button, Stack } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 import type { Vacancy } from '../../types/vacancy';
 import classes from './VacancyCard.module.css';
 
@@ -54,7 +55,12 @@ function getWorkFormatBadge(schedule: Vacancy['schedule']): { label: string; var
 }
 
 export function VacancyCard({ vacancy }: VacancyCardProps) {
+  const navigate = useNavigate();
   const workFormat = getWorkFormatBadge(vacancy.schedule);
+
+  const handleViewVacancy = () => {
+    navigate(`/vacancy/${vacancy.id}`);
+  };
 
   return (
     <Card className={classes.card} padding={0} withBorder>
@@ -94,6 +100,7 @@ export function VacancyCard({ vacancy }: VacancyCardProps) {
           <Button
             variant="filled"
             className={classes.buttonPrimary}
+            onClick={handleViewVacancy}
           >
             Смотреть вакансию
           </Button>
